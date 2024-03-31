@@ -16,10 +16,10 @@ return {
 
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'mfussenegger/nvim-dap-python',
   },
   config = function()
     local dap = require 'dap'
@@ -83,5 +83,20 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+    require('dap-python').setup()
+  end,
+}, {
+  'jay-babu/mason-nvim-dap.nvim',
+
+  dependencies = {
+    'ldelossa/nvim-dap-projects',
+  },
+  -- overrides `require("mason-nvim-dap").setup(...)`
+  opts = function(_, opts)
+    -- add more things to the ensure_installed table protecting against community packs modifying it
+    opts.ensure_installed = require('astronvim.utils').list_insert_unique(opts.ensure_installed, {
+      'codelldb',
+      'cpptools',
+    })
   end,
 }

@@ -1,7 +1,7 @@
 return {
   'theprimeagen/harpoon',
   branch = 'harpoon2',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
   config = function()
     require('harpoon'):setup()
   end,
@@ -14,7 +14,7 @@ return {
       desc = 'harpoon file',
     },
     {
-      '<leader>ht',
+      '<leader>hm',
       function()
         local harpoon = require 'harpoon'
         harpoon.ui:toggle_quick_menu(harpoon:list())
