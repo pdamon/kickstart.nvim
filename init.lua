@@ -542,9 +542,9 @@ require('lazy').setup({
           --
           -- This may be unwanted, since they displace some of your code
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>th', function()
+            map('<leader>lth', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, '[T]oggle Inlay [H]ints')
+            end, '[L]SP [T]oggle Inlay [H]ints')
           end
         end,
       })
@@ -566,10 +566,11 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         gopls = {},
-        pyright = {},
-        -- rust_analyzer = {},
+        -- pyright = {},
+        rust_analyzer = {},
+        ruff_lsp = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -652,6 +653,9 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         json = { 'jq' },
+        python = { 'ruff' },
+        go = { 'gofmt' },
+        rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
