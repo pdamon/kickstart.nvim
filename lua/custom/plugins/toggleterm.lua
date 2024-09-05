@@ -3,8 +3,7 @@ return {
   version = '*',
   config = function()
     require('toggleterm').setup {
-      -- Additional configuration options
-      hide_numbers = true,
+      hide_numbers = false,
       shade_filetypes = {},
       shade_terminals = true,
       shading_factor = 2,
@@ -43,8 +42,8 @@ return {
     map('n', '<leader>tt', '', { callback = toggle_term(100, 'tab'), noremap = true, silent = true, desc = 'ToggleTerm Tab' })
     map('n', '<leader>th', '', { callback = toggle_term(101, 'horizontal'), noremap = true, silent = true, desc = 'ToggleTerm Horizontal' })
     map('n', '<leader>tv', '', { callback = toggle_term(102, 'vertical'), noremap = true, silent = true, desc = 'ToggleTerm Vertical' })
-    -- Htop
-    -- map('n', '<leader>th', '', { callback = term_cmd('htop', 10), noremap = true, silent = true, desc = 'ToggleTerm htop' })
+    -- Btop
+    map('n', '<leader>tb', '', { callback = term_cmd('htop', 10), noremap = true, silent = true, desc = 'ToggleTerm htop' })
     -- Lazygit
     map('n', '<leader>tg', '', { callback = term_cmd('lazygit', 20), noremap = true, silent = true, desc = 'ToggleTerm lazygit' })
     -- Python
